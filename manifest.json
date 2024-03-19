@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "The Dark Side of Confluence",
+    "name": "Confluence Dark Mode",
     "version": "1.0",
     "description": "Convert Confluence into Dark Mode",
     "permissions": [
@@ -8,8 +8,10 @@
     ],
     "content_scripts": [
         {
-            "matches": [
-                "*://*.atlassian.net/*"
+            "matches": ["<all_urls>"],
+            "include_globs": [
+                "*://*.atlassian.net/*",
+                "https://confluence.*/*"
             ],
             "js": [
                 "content.js"

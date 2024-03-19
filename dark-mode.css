@@ -1,30 +1,52 @@
-const styles = `
 /* 
 This file is not being directly used. 
 Its purpose is just to have a separate 
 file to pretify and debug stylesheet 
 */
 
-/* --- MAIN COLOR BACKGROUND --- */
+/* --- MAIN SECTIONS --- */
 html,
-html * {
-    background-color: #202020 !important;
+body,
+#main,
+.content,
+#toolbar,
+#createpageform,
+#tinymce,
+#rte-toolbar,
+#rte,
+iframe,
+.search-container-component,
+.aui-sidebar-wrapper,
+header,
+header > div,
+.aui-page-panel-inner,
+aside,
+.cell,
+.cell > div,
+#footer-logo,
+#main-header,
+#footer,
+#full-height-container,
+#action-menu,
+.aui-dropdown2,
+.aui-inline-dialog,
+.aui-inline-dialog-contents,
+.aui-inline-dialog,
+.contents,
+.dialog-page-body,
+#main-content {
+    background-color: #1e1f20 !important;
     color: lightgray !important;
 }
 
-/* --- SECONDARY BACKGROUND --- */
+/* --- SIDEBAR --- */
 .acs-side-bar,
-.ia-fixed-sidebar,
-.ia-fixed-sidebar *,
-nav,
-nav * {
-    background-color: #2E2E30 !important;
-    color: lightgray !important;
-}
-
-.ia-splitter-handle,
-.ia-splitter-handle * {
-    background-color: #202020 !important;
+.dialog-components,
+.create-dialog-body,
+.loadable,
+.ia-scrollable-section,
+.acs-side-bar-content {
+    background-color: #2e2e30 !important;
     color: lightgray !important;
 }
 
@@ -97,11 +119,10 @@ li.acs-nav-item .acs-nav-item-link:focus {
 
 /* --- MAIN ELEMENTS --- */
 span,
-span *,
 ul,
 form > div {
     background-color: transparent !important;
-    color: inherit !important;
+    color: #dbdbdb !important;
 }
 
 .user-mention,
@@ -113,11 +134,7 @@ time {
 th,
 .panelHeader {
     background-color: #4f4f4f !important;
-    border: 1px solid gray !important;
-    color: #cad0da !important;
-}
-th * {
-    background-color: #4f4f4f !important;
+    border: 1px solid #5b5b5b !important;
     color: #cad0da !important;
 }
 
@@ -161,7 +178,6 @@ button {
 
 .button-primary,
 .aui-button,
-.aui-button *,
 .aui-button-primary {
     background-color: #3e3e3e !important;
 }
@@ -171,11 +187,7 @@ button {
     filter: brightness(120%) !important;
 }
 
-#editor-precursor > .cell,
-#editor-precursor > div,
-#editor-precursor > div > div,
-#editor-precursor > div > div > input
-{
+#editor-precursor > .cell {
     background-color: white !important;
 }
 
@@ -191,7 +203,7 @@ li {
 
 /* --- SCROLLBARS --- */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -210,18 +222,3 @@ li {
 :root {
     color-scheme: dark;
 }
-`
-
-function applyDarkMode() {
-    const styleElement = document.createElement('style');
-    styleElement.textContent = styles;
-    document.head.appendChild(styleElement);
-
-    document.querySelectorAll('[data-color-scheme]').forEach(element => {
-        element.setAttribute('data-color-scheme', 'dark');
-    });
-
-    console.log('Confluence Dark Mode [ACTIVE]')
-}
-
-applyDarkMode();

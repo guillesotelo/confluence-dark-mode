@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confluence Dark Mode</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #303030;
+            color: #ffffff;
+            width: 250px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin: 1.5rem 0;
+        }
+        a {
+            color: #78e08f;
+            text-decoration: none;
+            transition: .2s;
+        }
+        a:hover {
+              opacity: .7;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #c4c5dd;
+            border: none;
+            border-radius: .5rem;
+            color: #303030;
+            font-size: 16px;
+            transition: .2s;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: .7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Confluence Dark Mode</h1>
+    <p>This extension converts Confluence styles into dark mode.</p>
+    <!-- <p>Click the button below to deactivate the extension:</p>
+    <button id="deactivateButton">Deactivate Extension</button> -->
+    <p>For more information or to report issues, visit the <a href="https://github.com/guillesotelo/confluence-dark-mode.git" target="_blank">GitHub page</a>.</p>
+
+    <script>
+        function deactivateExtension() {
+            // Deactivation logic
+            setTimeout(() => window.close(), 300)
+        }
+        document.getElementById("deactivateButton").addEventListener("click", deactivateExtension);
+    </script>
+</body>
+</html>
