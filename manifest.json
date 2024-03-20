@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Confluence Dark Mode",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Convert Confluence into Dark Mode",
     "permissions": [
         "activeTab"
