@@ -24,6 +24,6 @@ This Chrome extension applies dark mode styles to Confluence pages, making it ea
 
 ## Disclaimer
 
-Take in mind that this is a *work in progress*. Your feedback is important for you, me, and everyone who uses the extension. Please create an issue if you find any, or contact me directly in the comments or by[email](mailto:guille.sotelo.cloud@gmail.com) for any concern or suggestions.
+Take in mind that this is a *work in progress*. Your feedback is important for you, me, and everyone who uses the extension. Please create an issue if you find any, or contact me directly in the comments or by [email](mailto:guille.sotelo.cloud@gmail.com) for any concern or suggestions.
 
 Thanks for your contribution!
