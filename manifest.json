@@ -3,9 +3,7 @@
     "name": "Confluence Dark Mode",
     "version": "1.1",
     "description": "Convert Confluence into Dark Mode",
-    "permissions": [
-        "activeTab"
-    ],
+    "permissions": [],
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
