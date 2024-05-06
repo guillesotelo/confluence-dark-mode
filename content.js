@@ -1,3 +1,8 @@
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    if (message.action === "run") applyDarkMode()
+    if (message.action === "revert") revertDarkMode()
+})
+
 const styles = `
 /* 
 The content of the css file will be copied 
@@ -26,7 +31,10 @@ header,
 }
 
 img,
-svg {
+svg,
+video,
+div[role=img],
+*[style*="background-image"] {
     filter: invert(84%) grayscale(0%) saturate(110%) contrast(115%) brightness(110%) hue-rotate(180deg) !important;
 }
 
@@ -69,4 +77,26 @@ function applyDarkMode() {
     console.log('Confluence Dark Mode [ACTIVE]')
 }
 
-applyDarkMode();
+function revertDarkMode() {
+    location.reload()
+    console.log('Let there be light!')
+}
+
+function run() {
+    chrome.storage.local.get('switchedOn', function (data) {
+        const isOn = data.switchedOn === 1; // Check if lights are on
+        const on = document.getElementById("on");
+        const off = document.getElementById("off");
+
+        // Switched on or first time using extension
+        if (isOn || data.switchedOn === undefined) {
+            applyDarkMode()
+            if (on && off) {
+                off.classList.remove('active')
+                on.classList.add('active')
+            }
+        }
+    })
+}
+
+run();

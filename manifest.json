@@ -1,9 +1,9 @@
 {
     "manifest_version": 3,
     "name": "Confluence Dark Mode",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Convert Confluence into Dark Mode",
-    "permissions": [],
+    "permissions": ["storage"],
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
@@ -31,5 +31,8 @@
             "48": "icons/icon48.png",
             "128": "icons/icon128.png"
         }
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }
