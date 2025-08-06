@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const on = document.getElementById("on")
             const off = document.getElementById("off")
 
-            // Switched on or first time using extension
+            // Button is switched on, or is first time using extension (we switch it on)
             if (isOn || data.switchedOn === undefined) {
                 off.classList.remove('active')
                 on.classList.add('active')
