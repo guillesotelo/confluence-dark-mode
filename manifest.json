@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Confluence Dark Mode",
-    "version": "1.7",
+    "version": "1.9",
     "description": "Convert Confluence into Dark Mode",
     "permissions": ["storage"],
     "content_scripts": [

@@ -6,6 +6,8 @@ let originalColorSchemeAttr = null;
 let editorIframeObserver = null;
 let iframeFallbackInterval = null;
 
+let lastUrl = location.href;
+
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.action === "run") applyDarkMode();
     if (message.action === "revert") revertDarkMode();
@@ -122,6 +124,15 @@ function tryInjectIntoEditorIframe() {
             *[class^="highlight"] {
                 filter: invert(1.1) brightness(120%) hue-rotate(180deg) !important;
             }
+            
+            /* --- Skip the following elements --- */
+            img,
+            svg,
+            video,
+            div[role=img],
+            *[style*="background-image"] {
+                filter: invert(1.1) hue-rotate(180deg) !important;
+            }
         `;
         doc.head.appendChild(style);
         console.log('[DarkMode] Editor iframe styled');
@@ -221,7 +232,82 @@ function revertDarkMode() {
     console.log('Let there be light!')
 }
 
+function shouldSkipDarkMode(url) {
+    // Normalize
+    url = url.toLowerCase();
+
+    return (
+        // PDF export
+        url.includes('/pdfpageexport.action') ||
+
+        // Attachment/file viewers
+        url.includes('/viewer') ||
+        url.includes('/attachment') && (url.endsWith('.pdf') || url.endsWith('.docx') || url.endsWith('.pptx') || url.endsWith('.xlsx')) ||
+
+        // Office Connector preview
+        url.includes('officeconnector') ||
+
+        // Source or macro preview
+        url.includes('/viewsource') ||
+        url.includes('/macro-preview') ||
+
+        // Directly opened attachments (not page content)
+        url.match(/\.(pdf|docx?|xlsx?|pptx?)($|\?)/)
+    );
+}
+
+function observeUrlChanges() {
+    const handleChange = () => {
+        if (location.href !== lastUrl) {
+            lastUrl = location.href;
+            console.log('[DarkMode] URL changed:', location.href);
+
+            if (shouldSkipDarkMode(lastUrl)) {
+                console.log('[DarkMode] Skipping on viewer/doc page.');
+                revertDarkMode();
+            } else {
+                run();
+            }
+        }
+    };
+
+    // Detect history changes
+    const pushState = history.pushState;
+    const replaceState = history.replaceState;
+
+    history.pushState = function (...args) {
+        const result = pushState.apply(this, args);
+        handleChange();
+        return result;
+    };
+
+    history.replaceState = function (...args) {
+        const result = replaceState.apply(this, args);
+        handleChange();
+        return result;
+    };
+
+    window.addEventListener('popstate', handleChange);
+    window.addEventListener('hashchange', handleChange);
+
+    // Wait until document.body is ready
+    function waitForBodyThenObserve() {
+        if (document.body) {
+            new MutationObserver(handleChange).observe(document.body, { childList: true, subtree: true });
+        } else {
+            requestAnimationFrame(waitForBodyThenObserve);
+        }
+    }
+
+    waitForBodyThenObserve();
+}
+
 function run() {
+    if (shouldSkipDarkMode(lastUrl)) {
+        revertDarkMode();
+        return;
+    }
+
     chrome.storage.local.get('switchedOn', function (data) {
         const isOn = data.switchedOn === 1 || data.switchedOn === undefined;
         if (isOn) {
@@ -232,4 +318,6 @@ function run() {
     });
 }
 
+// --- Initialize ---
 run();
+observeUrlChanges();
