@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Store assets</title>
+  <link rel="stylesheet" href="../../popup.css" />
+  <link rel="stylesheet" href="frames.css" />
+</head>
+
+<body>
+
+  <!-- ============ 1. HERO — 1280x800 ============ -->
+  <section class="frame shot" id="f-hero">
+    <div class="aurora big" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+    </div>
+
+    <div class="split">
+      <div class="copy">
+        <div class="brandline">
+          <img class="mark" src="../../icons/icon128.png" alt="" />
+          <span>Confluence Dark Mode</span>
+        </div>
+        <h1>Confluence,<br /><span class="grad">finally dark.</span></h1>
+        <p>One click and every page, table, macro and code block turns dark —
+          while images, diagrams and brand colours stay exactly as they were.</p>
+        <ul class="ticks">
+          <li>Applies before the page paints — no white flash</li>
+          <li>Atlassian Cloud and self-hosted instances</li>
+          <li>No account, no tracking, no network calls</li>
+        </ul>
+      </div>
+
+      <div class="popup-stage">
+        <div class="popup-mock" data-mock></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. THEMES — 1280x800 ============ -->
+  <section class="frame shot" id="f-themes">
+    <div class="aurora big" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b2"></span>
+    </div>
+
+    <div class="stack">
+      <header class="fhead">
+        <h2>Five themes. Or dial in your own.</h2>
+        <p>Darkness, contrast and warmth update live as you drag.</p>
+      </header>
+
+      <div class="theme-grid">
+        <figure class="theme-card">
+          <div class="preview" data-page style="filter:invert(.9) hue-rotate(180deg)"></div>
+          <figcaption><span class="sw" style="background:linear-gradient(135deg,rgb(26,26,26) 50%,rgb(78,78,78) 50%)"></span>Classic</figcaption>
+        </figure>
+        <figure class="theme-card">
+          <div class="preview" data-page style="filter:invert(.84) hue-rotate(180deg) contrast(.95) brightness(1.04) sepia(.03)"></div>
+          <figcaption><span class="sw" style="background:linear-gradient(135deg,rgb(47,47,47) 50%,rgb(91,91,90) 50%)"></span>Dim</figcaption>
+        </figure>
+        <figure class="theme-card">
+          <div class="preview" data-page style="filter:invert(.95) hue-rotate(180deg) contrast(1.06) brightness(.98)"></div>
+          <figcaption><span class="sw" style="background:linear-gradient(135deg,rgb(6,6,6) 50%,rgb(66,66,66) 50%)"></span>Deep</figcaption>
+        </figure>
+        <figure class="theme-card">
+          <div class="preview" data-page style="filter:invert(1) hue-rotate(180deg) contrast(1.12) brightness(.94)"></div>
+          <figcaption><span class="sw" style="background:linear-gradient(135deg,rgb(0,0,0) 50%,rgb(54,54,54) 50%)"></span>AMOLED</figcaption>
+        </figure>
+        <figure class="theme-card">
+          <div class="preview" data-page style="filter:invert(.9) hue-rotate(180deg) sepia(.16)"></div>
+          <figcaption><span class="sw" style="background:linear-gradient(135deg,rgb(26,26,25) 50%,rgb(80,78,75) 50%)"></span>Warm</figcaption>
+        </figure>
+      </div>
+
+      <div class="tuner glass">
+        <div class="tuner-col">
+          <span class="slider-label">Darkness <b>90%</b></span>
+          <span class="fakerange"><i style="width:67%"></i><em style="left:67%"></em></span>
+        </div>
+        <div class="tuner-col">
+          <span class="slider-label">Contrast <b>100%</b></span>
+          <span class="fakerange"><i style="width:33%"></i><em style="left:33%"></em></span>
+        </div>
+        <div class="tuner-col">
+          <span class="slider-label">Warmth <b>0%</b></span>
+          <span class="fakerange"><i style="width:2%"></i><em style="left:2%"></em></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. SELF-HOSTED — 1280x800 ============ -->
+  <section class="frame shot" id="f-selfhosted">
+    <div class="aurora big" aria-hidden="true">
+      <span class="blob b2"></span><span class="blob b3"></span>
+    </div>
+
+    <div class="stack">
+      <header class="fhead">
+        <h2>Your company's Confluence too.</h2>
+        <p>Self-hosted instances on any domain are detected automatically — no setup, no URL patterns to write.</p>
+      </header>
+
+      <div class="browser">
+        <div class="chrome-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="urlbar">wiki.acme.com/display/ENG/Engineering+Home</span>
+        </div>
+        <div class="viewport" data-page data-full style="filter:invert(.9) hue-rotate(180deg)"></div>
+      </div>
+
+      <div class="callout glass">
+        <div class="row-copy">
+          <span class="row-title">wiki.acme.com</span>
+          <span class="row-sub">Confluence detected here</span>
+        </div>
+        <span class="switch small" aria-checked="true"><span class="knob"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CONTROL — 1280x800 ============ -->
+  <section class="frame shot" id="f-control">
+    <div class="aurora big" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b3"></span>
+    </div>
+
+    <div class="stack">
+      <header class="fhead">
+        <h2>On when you want it. Off when you don't.</h2>
+        <p>Per-site switches, a schedule, and a shortcut that works without leaving the page.</p>
+      </header>
+
+      <div class="cards">
+        <div class="feat glass">
+          <span class="ic">🕗</span>
+          <b>Schedule it</b>
+          <p>Always on, in step with your system theme, or between two times of day.</p>
+          <div class="mini">
+            <span class="mini-row"><span>Activate</span><span class="mini-pill">On a schedule</span></span>
+            <span class="mini-row"><span>From</span><span class="mini-pill">19:00</span><span>To</span><span class="mini-pill">07:00</span></span>
+          </div>
+        </div>
+
+        <div class="feat glass">
+          <span class="ic">🎯</span>
+          <b>One site at a time</b>
+          <p>Turn it off for a single wiki without touching the rest.</p>
+          <div class="mini">
+            <span class="mini-site"><span>docs.internal.dev</span><span class="on">ON</span></span>
+            <span class="mini-site"><span>wiki.acme.com</span><span class="on">ON</span></span>
+            <span class="mini-site"><span>confluence.old.example.org</span><span class="off">OFF</span></span>
+          </div>
+        </div>
+
+        <div class="feat glass">
+          <span class="ic">⌨️</span>
+          <b>Toggle instantly</b>
+          <p>A keyboard shortcut you can rebind to anything.</p>
+          <div class="keys">
+            <kbd>Alt</kbd><kbd>Shift</kbd><kbd>D</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. SMALL PROMO TILE — 440x280 ============ -->
+  <section class="frame tile" id="f-tile-small">
+    <div class="aurora big" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b2"></span>
+    </div>
+    <div class="tile-inner">
+      <img class="mark xl" src="../../icons/icon128.png" alt="" />
+      <h3>Confluence<br /><span class="grad">Dark Mode</span></h3>
+      <p>Themes · scheduling · self-hosted</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. MARQUEE PROMO TILE — 1400x560 ============ -->
+  <section class="frame marquee" id="f-tile-marquee">
+    <div class="aurora big" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+    </div>
+    <div class="marquee-inner">
+      <div class="marquee-copy">
+        <div class="brandline">
+          <img class="mark" src="../../icons/icon128.png" alt="" />
+          <span>Confluence Dark Mode</span>
+        </div>
+        <h1>Confluence,<br /><span class="grad">finally dark.</span></h1>
+        <p>Five themes, per-site control and automatic support for self-hosted instances.</p>
+      </div>
+      <div class="marquee-art">
+        <div class="browser mini-browser">
+          <div class="chrome-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="urlbar">acme.atlassian.net/wiki</span>
+          </div>
+          <div class="viewport" data-page data-full style="filter:invert(.9) hue-rotate(180deg)"></div>
+        </div>
+        <div class="popup-mock floating" data-mock></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="frames.js"></script>
+</body>
+
+</html>
