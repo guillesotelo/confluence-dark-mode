@@ -1,0 +1,859 @@
+/* Layout for the Chrome Web Store asset frames. Pulls the real popup.css in
+   so the popup shown in the screenshots is the popup that ships. */
+
+body {
+  margin: 0;
+  background: #05060b;
+  color: var(--text);
+  font: 400 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  isolation: isolate;
+}
+
+.frame.shot {
+  width: 1280px;
+  height: 800px;
+}
+
+.frame.tile {
+  width: 440px;
+  height: 280px;
+}
+
+.frame.marquee {
+  width: 1400px;
+  height: 560px;
+}
+
+/* ---------- backdrop ---------- */
+
+.aurora.big {
+  position: absolute;
+  z-index: 0;
+}
+
+.aurora.big .blob {
+  filter: blur(110px);
+  opacity: 0.5;
+  animation: none;
+}
+
+.aurora.big .b1 {
+  width: 780px;
+  height: 780px;
+  top: -280px;
+  left: -180px;
+  background: radial-gradient(circle, #7b5cff, transparent 66%);
+}
+
+.aurora.big .b2 {
+  width: 700px;
+  height: 700px;
+  top: auto;
+  right: -220px;
+  bottom: -260px;
+  background: radial-gradient(circle, #17b6d8, transparent 66%);
+}
+
+.aurora.big .b3 {
+  width: 620px;
+  height: 620px;
+  bottom: auto;
+  top: 40%;
+  left: 42%;
+  background: radial-gradient(circle, #ff5c9b, transparent 68%);
+  opacity: 0.24;
+}
+
+/* ---------- shared type ---------- */
+
+.grad {
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brandline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 26px;
+}
+
+.mark {
+  width: 34px;
+  height: 34px;
+  filter: invert(1);
+  opacity: 0.92;
+}
+
+.mark.xl {
+  width: 60px;
+  height: 60px;
+}
+
+.copy h1,
+.marquee-copy h1 {
+  margin: 0 0 22px;
+  font-size: 62px;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-weight: 680;
+}
+
+.copy p,
+.marquee-copy p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 34ch;
+}
+
+.fhead {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.fhead h2 {
+  margin: 0 0 10px;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 660;
+}
+
+.fhead p {
+  margin: 0;
+  font-size: 19px;
+  color: var(--muted);
+}
+
+/* ---------- 1. hero ---------- */
+
+.split {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  padding: 0 76px;
+}
+
+.copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.ticks {
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 13px;
+}
+
+.ticks li {
+  position: relative;
+  padding-left: 32px;
+  font-size: 17px;
+  color: rgba(238, 241, 248, 0.72);
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.ticks li::after {
+  content: "";
+  position: absolute;
+  left: 6.5px;
+  top: 11px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(43deg);
+}
+
+.popup-stage {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 470px;
+}
+
+/* ---------- popup replica ---------- */
+
+.popup-mock {
+  position: relative;
+  width: 336px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  transform-origin: center;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.popup-mock .aurora {
+  position: absolute;
+}
+
+.popup-mock .blob {
+  animation: none;
+}
+
+.popup-mock .shell {
+  padding: 14px;
+}
+
+.popup-mock .switch,
+.popup-mock .chip,
+.popup-mock .ghost,
+.popup-mock .caret {
+  cursor: default;
+}
+
+.popup-mock .caret {
+  color: var(--faint);
+  font-size: 15px;
+  line-height: 1;
+  padding-bottom: 9px;
+}
+
+.popup-mock .adv-closed {
+  padding-bottom: 2px;
+}
+
+.popup-mock .foot a {
+  cursor: default;
+}
+
+/* Static stand-in for <input type=range>. */
+.fakerange {
+  position: relative;
+  display: block;
+  height: 6px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.fakerange i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.fakerange em {
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  margin: -7.5px 0 0 -7.5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.slider-label.sp {
+  margin-top: 11px;
+}
+
+/* ---------- stacked frames ---------- */
+
+.stack {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 56px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------- 2. themes ---------- */
+
+.theme-grid {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+.theme-card {
+  margin: 0;
+  flex: none;
+  width: 216px;
+}
+
+.theme-card .preview {
+  width: 216px;
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+}
+
+.theme-card figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 550;
+  color: rgba(238, 241, 248, 0.8);
+}
+
+.theme-card .sw {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.tuner {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 26px 34px;
+}
+
+.tuner-col {
+  flex: 1;
+}
+
+.tuner .slider-label {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.tuner .fakerange {
+  height: 8px;
+}
+
+.tuner .fakerange em {
+  width: 19px;
+  height: 19px;
+  margin: -9.5px 0 0 -9.5px;
+}
+
+/* ---------- 3. browser frame ---------- */
+
+.browser {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.6);
+  background: #14161f;
+}
+
+.chrome-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.chrome-bar .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.dot.r {
+  background: #ff5f57;
+}
+
+.dot.y {
+  background: #febc2e;
+}
+
+.dot.g {
+  background: #28c840;
+}
+
+.urlbar {
+  margin-left: 12px;
+  flex: 1;
+  height: 24px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.viewport {
+  height: 404px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.callout {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 26px auto 0;
+  width: 460px;
+  padding: 16px 20px;
+}
+
+.callout .row-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.callout .row-sub {
+  font-size: 13px;
+  color: var(--on);
+}
+
+/* ---------- 4. control ---------- */
+
+.cards {
+  display: flex;
+  gap: 22px;
+}
+
+.feat {
+  flex: 1;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feat .ic {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  background: linear-gradient(135deg, rgba(139, 108, 255, 0.35), rgba(43, 214, 245, 0.22));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 18px;
+}
+
+.feat b {
+  font-size: 21px;
+  font-weight: 620;
+  letter-spacing: -0.01em;
+}
+
+.feat>p {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.mini {
+  margin-top: 22px;
+  display: grid;
+  gap: 9px;
+}
+
+.mini-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.mini-pill {
+  padding: 5px 11px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.mini-site {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.045);
+  border-radius: 9px;
+  padding: 8px 11px;
+}
+
+.mini-site .on {
+  color: var(--on);
+  font-weight: 650;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.mini-site .off {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 650;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.keys {
+  margin-top: 26px;
+  display: flex;
+  gap: 9px;
+}
+
+.keys kbd {
+  font-size: 16px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--stroke);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+  color: var(--text);
+}
+
+/* ---------- 5. small tile ---------- */
+
+.tile .aurora.big .blob {
+  filter: blur(64px);
+  opacity: 0.42;
+}
+
+.tile .aurora.big .b1 {
+  width: 300px;
+  height: 300px;
+  top: -130px;
+  left: -90px;
+}
+
+.tile .aurora.big .b2 {
+  width: 280px;
+  height: 280px;
+  right: -110px;
+  bottom: -130px;
+}
+
+
+.tile-inner {
+  position: relative;
+  z-index: 1;
+  padding: 0 34px;
+  align-self: center;
+}
+
+.tile-inner h3 {
+  margin: 16px 0 10px;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 680;
+}
+
+.tile-inner p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* ---------- 6. marquee ---------- */
+
+.marquee-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 70px;
+  gap: 30px;
+}
+
+.marquee-copy {
+  flex: none;
+  width: 500px;
+}
+
+.marquee-copy h1 {
+  font-size: 56px;
+  margin-bottom: 18px;
+}
+
+.marquee-copy p {
+  font-size: 18px;
+  max-width: 26ch;
+}
+
+.marquee-art {
+  position: relative;
+  flex: 1;
+  height: 560px;
+}
+
+.mini-browser {
+  position: absolute;
+  top: 112px;
+  left: -10px;
+  width: 620px;
+}
+
+.mini-browser .viewport {
+  height: 286px;
+}
+
+.popup-mock.floating {
+  position: absolute;
+  right: -30px;
+  bottom: 58px;
+  transform: scale(0.72);
+  transform-origin: bottom right;
+}
+
+/* ---------- mock Confluence page (light; frames apply the filter) ---------- */
+
+.cp {
+  width: 1440px;
+  height: 900px;
+  transform-origin: 0 0;
+  background: #fff;
+  color: #172b4d;
+  font: 400 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-align: left;
+}
+
+.viewport .cp {
+  transform: scale(0.8);
+}
+
+.mini-browser .viewport .cp {
+  transform: scale(0.43);
+}
+
+.preview .cp {
+  transform: scale(0.34);
+}
+
+.cp-top {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  height: 62px;
+  padding: 0 28px;
+  border-bottom: 1px solid #dfe1e6;
+  background: #fff;
+}
+
+.cp-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: #0052cc;
+}
+
+.cp-nav {
+  font-size: 15px;
+  color: #42526e;
+}
+
+.cp-create {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: #0052cc;
+  padding: 7px 16px;
+  border-radius: 5px;
+}
+
+.cp-search {
+  flex: 1;
+  max-width: 320px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid #dfe1e6;
+  background: #fafbfc;
+}
+
+.cp-body {
+  display: flex;
+  height: 838px;
+}
+
+.cp-side {
+  flex: none;
+  width: 262px;
+  background: #f4f5f7;
+  border-right: 1px solid #dfe1e6;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cp-space {
+  font-size: 15px;
+  font-weight: 700;
+  color: #172b4d;
+  margin-bottom: 16px;
+}
+
+.cp-li {
+  font-size: 14px;
+  color: #42526e;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.cp-li.on {
+  background: #e6effc;
+  color: #0052cc;
+  font-weight: 600;
+}
+
+.cp-main {
+  flex: 1;
+  padding: 34px 46px;
+  min-width: 0;
+}
+
+.cp-main h3 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 620;
+  letter-spacing: -0.01em;
+}
+
+.cp-meta {
+  margin: 6px 0 22px;
+  font-size: 13px;
+  color: #6b778c;
+}
+
+.cp-main p {
+  margin: 0 0 18px;
+}
+
+.cp-main a {
+  color: #0052cc;
+  text-decoration: underline;
+}
+
+.cp-main h4 {
+  margin: 26px 0 12px;
+  font-size: 21px;
+  font-weight: 620;
+}
+
+.cp-note {
+  background: #deebff;
+  border-left: 4px solid #0052cc;
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-size: 15px;
+}
+
+.cp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.cp-table th,
+.cp-table td {
+  border: 1px solid #dfe1e6;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.cp-table th {
+  background: #f4f5f7;
+  font-weight: 600;
+}
+
+.cp-badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cp-badge.done {
+  background: #e3fcef;
+  color: #006644;
+}
+
+.cp-badge.wip {
+  background: #deebff;
+  color: #0747a6;
+}
+
+.cp-code {
+  margin: 0;
+  background: #f4f5f7;
+  border: 1px solid #dfe1e6;
+  border-radius: 4px;
+  padding: 14px 18px;
+  font: 400 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #172b4d;
+}
+
+.cp-swatches {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px !important;
+}
+
+/* The extension re-inverts media so it renders as authored — mirror that. */
+.cp svg {
+  filter: invert(1.1) hue-rotate(180deg);
+}
+
+.cp-caption {
+  font-size: 13px;
+  color: #6b778c;
+  margin-left: 6px;
+}
+
+.preview .cp-swatches,
+.preview .cp-meta {
+  visibility: hidden;
+}

@@ -1,98 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Confluence Dark Mode</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        background-color: #3c3c3c;
-        color: #ffffff;
-        width: 250px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
 
-      h1 {
-        font-size: 20px;
-        margin-bottom: 20px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>Confluence Dark Mode</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
 
-      p {
-        font-size: 16px;
-        margin: 1.5rem 0;
-      }
+<body>
+  <div class="aurora" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
 
-      a {
-        color: #78e08f;
-        text-decoration: none;
-        transition: 0.2s;
-      }
+  <main class="shell">
+    <header class="head">
+      <img class="logo" src="icons/icon48.png" alt="" width="34" height="34" />
+      <div class="head-text">
+        <h1>Confluence Dark Mode</h1>
+        <p id="statusLine" class="sub">Loading…</p>
+      </div>
+      <span class="pill" id="versionPill">v2.0</span>
+    </header>
 
-      a:hover {
-        opacity: 0.7;
-      }
+    <!-- Master switch -->
+    <section class="glass hero" id="heroCard">
+      <div class="hero-copy">
+        <span class="hero-title">Dark mode</span>
+        <span class="hero-sub" id="masterSub">Enabled everywhere</span>
+      </div>
+      <button class="switch" id="masterSwitch" role="switch" aria-checked="true"
+        aria-label="Toggle dark mode globally">
+        <span class="knob"></span>
+      </button>
+    </section>
 
-      button {
-        border: 2px solid black;
-        padding: 10px 20px;
-        background-color: black;
-        border-radius: 2rem;
-        color: #303030;
-        font-size: 16px;
-        transition: 0.2s;
-        cursor: pointer;
-      }
+    <!-- Current site -->
+    <section class="glass row" id="siteCard">
+      <div class="row-copy">
+        <span class="row-title" id="siteTitle">This site</span>
+        <span class="row-sub" id="siteSub">—</span>
+      </div>
+      <button class="switch small" id="siteSwitch" role="switch" aria-checked="true"
+        aria-label="Toggle dark mode for this site">
+        <span class="knob"></span>
+      </button>
+    </section>
 
-      button:hover {
-        opacity: 0.7;
-      }
+    <!-- Themes -->
+    <section class="glass block">
+      <h2 class="block-title">Theme</h2>
+      <div class="chips" id="themeChips" role="radiogroup" aria-label="Theme preset"></div>
+    </section>
 
-      #switchButton {
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-      }
+    <!-- Fine tuning -->
+    <section class="glass block">
+      <div class="block-head">
+        <h2 class="block-title">Fine tuning</h2>
+        <button class="ghost" id="resetBtn" type="button">Reset</button>
+      </div>
 
-      #switchButton p {
-        margin: 0;
-        border-radius: 1rem;
-        padding: 0.5rem;
-        color: white;
-        transition: 0.5s;
-      }
+      <label class="slider">
+        <span class="slider-label">Darkness <b id="invertVal">90%</b></span>
+        <input type="range" id="invert" min="70" max="100" step="1" />
+      </label>
 
-      .active {
-        color: black !important;
-        background-color: #1ed760;
-      }
+      <label class="slider">
+        <span class="slider-label">Contrast <b id="contrastVal">100%</b></span>
+        <input type="range" id="contrast" min="80" max="140" step="1" />
+      </label>
 
-      .textbox {
-        margin: 0 0 1rem 0;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Confluence Dark Mode</h1>
-    <p class="textbox">
-      This extension converts Confluence styles into dark mode.
-    </p>
-    <button id="switchButton">
-      <p id="off">Off</p>
-      <p id="on" class="active">On</p>
-    </button>
-    <p>
-      For more information or to report issues, visit the
-      <a
-        href="https://github.com/guillesotelo/confluence-dark-mode.git"
-        target="_blank"
-        >GitHub page</a
-      >.
-    </p>
-    <script src="popup.js"></script>
-  </body>
+      <label class="slider">
+        <span class="slider-label">Warmth <b id="sepiaVal">0%</b></span>
+        <input type="range" id="sepia" min="0" max="50" step="1" />
+      </label>
+    </section>
+
+    <!-- Advanced -->
+    <details class="glass block adv" id="advanced">
+      <summary>
+        <span>Advanced</span>
+        <svg class="caret" viewBox="0 0 20 20" width="14" height="14" aria-hidden="true">
+          <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </summary>
+
+      <div class="adv-body">
+        <label class="field">
+          <span>Activate</span>
+          <select id="scheduleMode">
+            <option value="always">Always</option>
+            <option value="system">Follow system theme</option>
+            <option value="custom">On a schedule</option>
+          </select>
+        </label>
+
+        <div class="field times" id="timeRow" hidden>
+          <label><span>From</span><input type="time" id="scheduleFrom" /></label>
+          <label><span>To</span><input type="time" id="scheduleTo" /></label>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="invertImages" />
+          <span><b>Keep images natural</b><em>Re-invert pictures, logos and diagrams</em></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="autoDetect" />
+          <span><b>Auto-detect Confluence</b><em>Also theme self-hosted instances on any domain</em></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" id="smoothTransition" />
+          <span><b>Smooth transitions</b><em>Fade when switching on or off</em></span>
+        </label>
+
+        <div class="sites" id="sitesWrap" hidden>
+          <span class="sites-title">Your sites</span>
+          <ul id="sitesList"></ul>
+        </div>
+      </div>
+    </details>
+
+    <footer class="foot">
+      <span class="kbd-hint">Toggle with <kbd id="shortcutHint">Alt</kbd><kbd>Shift</kbd><kbd>D</kbd></span>
+      <span class="links">
+        <a id="rateLink" href="#" target="_blank" rel="noreferrer">Rate ★</a>
+        <a href="https://github.com/guillesotelo/confluence-dark-mode" target="_blank" rel="noreferrer">GitHub</a>
+      </span>
+    </footer>
+  </main>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+
 </html>
